@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.room.Room
@@ -87,6 +88,7 @@ class FirstFragment : Fragment() {
 
         binding.btborrar.setOnClickListener {
             viewModel.deleteAllConsumo()
+            Toast.makeText(context,"Todos los consumos han sido borrados",Toast.LENGTH_LONG).show()
         }
 
         //recibir lo seleccionado en el recycler view, podria mandar una booleana para visibilidad
@@ -107,6 +109,11 @@ class FirstFragment : Fragment() {
 
         }
 
+        binding.btdeleteone.setOnClickListener {
+            consumoSeleccionado?.let { it1 -> viewModel.deleteOneConsumo(it1) }
+            Toast.makeText(context,"Consumo borrado de base de datos",Toast.LENGTH_LONG).show()
+        }
+
 
 
 
@@ -118,35 +125,52 @@ class FirstFragment : Fragment() {
         _binding = null
     }
 
-    private fun guardarDatos(){
-        var total= binding.textInputLayoutPrecio.editText?.text.toString()
+    private fun guardarDatos() {
+        var total = binding.textInputLayoutPrecio.editText?.text.toString()
             .toInt() * binding.textInputLayoutCantidad.editText?.text.toString().toInt()
         val producto = binding.textInputLayoutProducto.editText?.text.toString()
+        if (producto.isEmpty()) {
+            binding.textInputLayoutProducto.editText?.setError("Ingrese un producto")
+        }
         val precio = binding.textInputLayoutPrecio.editText?.text.toString().toInt()
+        if (precio == null) {
+            binding.textInputLayoutPrecio.editText?.setError("Ingrese un precio")
+        }
         val cantidad = binding.textInputLayoutCantidad.editText?.text.toString().toInt()
+        if (cantidad == null) {
+            binding.textInputLayoutCantidad.editText?.setError("Ingrese cantidad")
+        }
         //el total debe ser precio por cantidad, podre llamarlo dentro de la db?
         total = total
-        binding.textViewTotal.text="Total\n $total"
+        binding.textViewTotal.text = "Total\n $total"
+
+        if (producto.isEmpty() || precio == null || cantidad == null) {
+            Toast.makeText(context, "Ingrese los datos del consumo", Toast.LENGTH_LONG).show()
+        } else {
 
 
-        if (idConsumo==0){
-            val nuevoConsumo=Consumo(
-                producto=producto,
-                precio=precio,
-                cantidad = cantidad,
-                total = total
-            )
-            viewModel.insertConsumo(nuevoConsumo)
-        }else{
-            val nuevoConsumo1=Consumo(
-                id=idConsumo,
-                producto=producto,
-                precio=precio,
-                cantidad = cantidad,
-                total = total
-            )
-            viewModel.updateConsumo(nuevoConsumo1)
+            if (idConsumo == 0) {
+                val nuevoConsumo = Consumo(
+                    producto = producto,
+                    precio = precio,
+                    cantidad = cantidad,
+                    total = total
+                )
+                viewModel.insertConsumo(nuevoConsumo)
+                Toast.makeText(context, "Consumo guardado exitosamente", Toast.LENGTH_LONG).show()
+            } else {
+                val nuevoConsumo1 = Consumo(
+                    id = idConsumo,
+                    producto = producto,
+                    precio = precio,
+                    cantidad = cantidad,
+                    total = total
+                )
+                viewModel.updateConsumo(nuevoConsumo1)
+                Toast.makeText(context, "Consumo actualizado exitosamente", Toast.LENGTH_LONG)
+                    .show()
+            }
+
         }
-
     }
 }

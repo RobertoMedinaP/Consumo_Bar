@@ -1,4 +1,4 @@
-package com.example.consumo_bar
+package com.example.consumo_bar.View
 
 import android.view.LayoutInflater
 import android.view.View

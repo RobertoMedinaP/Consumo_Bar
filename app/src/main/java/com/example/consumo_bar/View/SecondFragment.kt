@@ -10,8 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.consumo_bar.ConsumoAdapter
-import com.example.consumo_bar.Modelo.Model.Consumo
 import com.example.consumo_bar.R
 import com.example.consumo_bar.ViewModel.ConsumoViewModel
 import com.example.consumo_bar.databinding.FragmentSecondBinding
@@ -46,7 +44,7 @@ class SecondFragment : Fragment() {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
 
-       val adapter=ConsumoAdapter()
+       val adapter= ConsumoAdapter()
         val recyclerView=binding.rv1
         recyclerView.adapter=adapter
         recyclerView.layoutManager=LinearLayoutManager(context)

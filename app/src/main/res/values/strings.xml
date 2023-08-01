@@ -7,13 +7,14 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="lorem_ipsum">Lorem ipsum</string>
+    <string name="lorem_ipsum">Consumos guardados</string>
     <string name="producto">Ingrese Producto</string>
     <string name="precio">Ingrese Precio por unidad</string>
     <string name="cantidad">Ingrese Cantidad de producto</string>
     <string name="add">Agregar</string>
     <string name="delete">Borrar todo</string>
     <string name="ShowAll">Mostrar todo</string>
+    <string name="deleteselected">Borrar tarea seleccionada</string>
 
 
 </resources>
