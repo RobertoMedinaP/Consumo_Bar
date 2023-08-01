@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Consumo_Bar</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="lorem_ipsum">Lorem ipsum</string>
+    <string name="producto">Ingrese Producto</string>
+    <string name="precio">Ingrese Precio por unidad</string>
+    <string name="cantidad">Ingrese Cantidad de producto</string>
+    <string name="add">Agregar</string>
+    <string name="delete">Borrar todo</string>
+    <string name="ShowAll">Mostrar todo</string>
+
+
+</resources>
