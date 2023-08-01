@@ -68,9 +68,9 @@ class SecondFragment : Fragment() {
                 /**recibo bien, el problema es volver al primer frag*
                  * acá la seleccion funciona bien
                  */
-                
+
                 //voy a mandar el elemento seleccionado al primer fragmento
-                //findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+                findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
             }
         }
 

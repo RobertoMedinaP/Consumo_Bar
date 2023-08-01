@@ -92,19 +92,20 @@ class FirstFragment : Fragment() {
         //recibir lo seleccionado en el recycler view, podria mandar una booleana para visibilidad
         //de boton borrar esta tarea
 
-        /**ACA el problema, estoy recibiendo bien??*/
-       /* viewModel.consumoSeleccionado().observe(viewLifecycleOwner){
+        /**ACA el problema, se me habia olvidado pasar a string */
+        viewModel.consumoSeleccionado().observe(viewLifecycleOwner){
             it?.let {
                 consumoElegido->
                 binding.textInputLayoutProducto.editText?.setText(consumoElegido.producto)
-                binding.textInputLayoutPrecio.editText?.setText(consumoElegido.precio)
-                binding.textInputLayoutCantidad.editText?.setText(consumoElegido.cantidad)
-                binding.textViewTotal.setText(consumoElegido.precio*consumoElegido.cantidad)
+                binding.textInputLayoutPrecio.editText?.setText(consumoElegido.precio.toString())
+                binding.textInputLayoutCantidad.editText?.setText(consumoElegido.cantidad.toString())
+                val totalidad=consumoElegido.precio*consumoElegido.cantidad
+                binding.textViewTotal.setText(totalidad.toString())
                 idConsumo=consumoElegido.id
                 consumoSeleccionado=consumoElegido
             }
 
-        }*/
+        }
 
 
 
